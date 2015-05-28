@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>6a894.png</file>
+        <file>continue.gif</file>
+        <file>quit-hi.png</file>
+        <file>score.png</file>
+        <file>youwin.png</file>
+        <file>unnamed.png</file>
+        <file>key.png</file>
+        <file>2048.png</file>
+        <file>2.png</file>
+        <file>4.png</file>
+        <file>8.png</file>
+        <file>16.png</file>
+        <file>32.png</file>
+        <file>64.png</file>
+        <file>128.png</file>
+        <file>256.png</file>
+        <file>512.png</file>
+        <file>1024.png</file>
+        <file>2048win.png</file>
+        <file>0.png</file>
+        <file>introduce.png</file>
+    </qresource>
+</RCC>
