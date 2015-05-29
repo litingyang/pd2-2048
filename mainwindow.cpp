@@ -356,7 +356,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     for(i=0;i<16;i++){
         if(array[i]==2048){ui->pushButton->show();
            // ui->continue_2->show();
-           ui->label_19->show();
+           ui->label_19->show();ui->pushButton_3->setEnabled(false);
            ui->label_19->setPixmap(QPixmap(":/youwin.png"));
             //ui->pushButton->show();
         for(j=0;j<16;j++){
@@ -378,6 +378,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 void MainWindow::on_pushButton_clicked()
 {
     //ui->pushButton->hide();
+    ui->pushButton_3->setEnabled(false);
     int i;
     for(i=0;i<16;i++){
         array[i]=0;
