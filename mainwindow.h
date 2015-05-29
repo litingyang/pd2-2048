@@ -34,6 +34,8 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
 public slots:
 
 
@@ -41,9 +43,10 @@ private:
     Ui::MainWindow *ui;
     QVector<QLabel *>qvec;
     QVector<int> array;
+    QVector<int> undo;
 
     int score;
-
+    int undoscore;
 
 };
 

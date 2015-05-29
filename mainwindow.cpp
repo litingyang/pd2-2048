@@ -76,6 +76,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     static int i,j,k;
     QVector<int>carr(array);
+    undo=array;
+    undoscore=score;
     int a=qrand()%16;
 
     switch(event->key()){
@@ -126,6 +128,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             qvec.at(i)->setFont(QFont("algerian",25-j*3,QFont::Bold));
         }
             if(array!=carr){
+                ui->pushButton_3->setEnabled(true);
                 while(array[a]!=0)
                     a=qrand()%16;
                 if(array[a]==0)
@@ -187,6 +190,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             qvec.at(i)->setFont(QFont("algerian",25-3*j,QFont::Bold));
         }
             if(array!=carr){
+                ui->pushButton_3->setEnabled(true);
                 while(array[a]!=0)
                     a=qrand()%16;
                 if(array[a]==0)
@@ -245,6 +249,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             qvec.at(i)->setFont(QFont("algerian",25-3*j,QFont::Bold));
         }
             if(array!=carr){
+                ui->pushButton_3->setEnabled(true);
                 while(array[a]!=0)
                     a=qrand()%16;
                 if(array[a]==0)
@@ -303,6 +308,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             }
 
             if(array!=carr){
+                ui->pushButton_3->setEnabled(true);
                 while(array[a]!=0)
                     a=qrand()%16;
                 if(array[a]==0)
@@ -431,4 +437,26 @@ void MainWindow::on_continue_2_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     ui->pushButton_2->hide();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    array=undo;
+    score=undoscore;
+    ui->label_18->setNum(score);
+    for(int f=0;f<16;f++){
+        if(array[f]==0)qvec[f]->setPixmap(QPixmap(":/0.png"));
+         if(array[f]==2)qvec[f]->setPixmap(QPixmap(":/2.png"));
+         if(array[f]==4)qvec[f]->setPixmap(QPixmap(":/4.png"));
+         if(array[f]==8)qvec[f]->setPixmap(QPixmap(":/8.png"));
+         if(array[f]==16)qvec[f]->setPixmap(QPixmap(":/16.png"));
+         if(array[f]==32)qvec[f]->setPixmap(QPixmap(":/32.png"));
+         if(array[f]==64)qvec[f]->setPixmap(QPixmap(":/64.png"));
+          if(array[f]==128)qvec[f]->setPixmap(QPixmap(":/128.png"));
+           if(array[f]==256)qvec[f]->setPixmap(QPixmap(":/256.png"));
+            if(array[f]==512)qvec[f]->setPixmap(QPixmap(":/512.png"));
+             if(array[f]==1024)qvec[f]->setPixmap(QPixmap(":/1024.png"));
+              if(array[f]==2048)qvec[f]->setPixmap(QPixmap(":/2048.png"));
+    }
+    ui->pushButton_3->setEnabled(false);
 }
