@@ -66,6 +66,11 @@ MainWindow::MainWindow(QWidget *parent) :
              if(array[f]==1024)qvec[f]->setPixmap(QPixmap(":/1024.png"));
               if(array[f]==2048)qvec[f]->setPixmap(QPixmap(":/2048.png"));
     }
+    one=array;
+    carr=array;
+    undoscore=score;
+    undo=one;
+    ui->pushButton_3->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -75,10 +80,10 @@ MainWindow::~MainWindow()
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     static int i,j,k;
-    QVector<int>carr(array);
-    undo=array;
-    undoscore=score;
+
     int a=qrand()%16;
+      one=array;
+      last=score;
 
     switch(event->key()){
         case Qt::Key_W:{
@@ -128,12 +133,15 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             qvec.at(i)->setFont(QFont("algerian",25-j*3,QFont::Bold));
         }
             if(array!=carr){
+
                 ui->pushButton_3->setEnabled(true);
                 while(array[a]!=0)
                     a=qrand()%16;
                 if(array[a]==0)
                 {
                 array[a]=2;
+                undoscore=last;
+                undo=one;
                 }
                 qvec.at(a)->setNum(array[a]);
             }
@@ -196,6 +204,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
                 if(array[a]==0)
                 {
                 array[a]=2;
+                undoscore=last;
+                undo=one;
                 }
                 qvec.at(a)->setNum(array[a]);
             }
@@ -255,6 +265,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
                 if(array[a]==0)
                 {
                 array[a]=2;
+                undoscore=last;
+                undo=one;
                 }
                 qvec.at(a)->setNum(array[a]);
             }
@@ -314,6 +326,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
                 if(array[a]==0)
                 {
                 array[a]=2;
+                undoscore=last;
+                undo=one;
                 }
                 qvec.at(a)->setNum(array[a]);
 
@@ -322,6 +336,9 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 }
 
 }
+
+        carr=array;
+
     for(int f=0;f<16;f++){
         if(array[f]==0)qvec[f]->setPixmap(QPixmap(":/0.png"));
          if(array[f]==2)qvec[f]->setPixmap(QPixmap(":/2.png"));
@@ -350,11 +367,13 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     }
     if (check()==true){ui->pushButton->show();
         ui->label_19->show();
-        ui->label_19->setPixmap(QPixmap(":/unnamed.png"));
+        ui->label_19->setPixmap(QPixmap(":/unnamed.png"));ui->pushButton_3->setEnabled(false);
+
     for(j=0;j<16;j++){
      qvec[j]->hide();
     }
     }
+
 }
 void MainWindow::on_pushButton_clicked()
 {

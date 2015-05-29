@@ -44,9 +44,13 @@ private:
     QVector<QLabel *>qvec;
     QVector<int> array;
     QVector<int> undo;
+    QVector<int> carr;
+    QVector<int> one;
+
 
     int score;
     int undoscore;
+    int last;
 
 };
 
